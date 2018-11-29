@@ -7,6 +7,7 @@ namespace App;
 class FileReader implements Reader
 {
     private $resource;
+    private $filesize;
     
     public function __construct(string $filename)
     {
@@ -18,6 +19,13 @@ class FileReader implements Reader
         if (!is_resource($this->resource)) {
             return new \RuntimeException('Cannot read the file ' . $filename);
         }
+
+        $this->filesize = filesize($filename);
+    }
+
+    public function size() : int
+    {
+        return $this->filesize;
     }
 
     public function readByLine()
