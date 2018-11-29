@@ -1,0 +1,9 @@
+{
+  "name" : "raymang/access-reader",
+  "description" : "Command for reading access log",
+  "autoload" : {
+    "psr-4" : {
+      "App\\" : "src/"
+    }
+  }
+}
