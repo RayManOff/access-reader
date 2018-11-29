@@ -5,7 +5,7 @@ namespace App;
 /**
  * @author Gadel Raymanov <raymanovg@gmail.com>
  */
-class RegexAccessParser
+class RegexAccessParser implements LogParser
 {
     private $pattern;
     private $needFields = [];
@@ -19,6 +19,7 @@ class RegexAccessParser
         $this->pattern = $pattern;
         $this->needFields = array_flip($needFields);
     }
+
     public function parse(string $data) : array
     {
         if (!preg_match($this->pattern, $data, $matches)) {
