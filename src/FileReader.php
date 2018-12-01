@@ -32,9 +32,16 @@ class FileReader implements Reader
     {
         while (!feof($this->resource)) {
             $buffer = fgets($this->resource);
-            if ($buffer !== false) {
-                yield $buffer;
+            if ($buffer === false) {
+                continue;
             }
+
+            $buffer = trim($buffer);
+            if (empty($buffer)) {
+                continue;
+            }
+
+            yield $buffer;
         }
     }
 }
