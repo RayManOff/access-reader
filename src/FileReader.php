@@ -12,15 +12,15 @@ class FileReader implements Reader
     public function __construct(string $filename)
     {
         if (!file_exists($filename)) {
-            return new \InvalidArgumentException('There is no file ' . $filename);
+            throw new \InvalidArgumentException('There is no file ' . $filename);
         }
 
         $this->resource = fopen($filename, 'r');
         if (!is_resource($this->resource)) {
-            return new \RuntimeException('Cannot read the file ' . $filename);
+            throw new \RuntimeException('Cannot read the file ' . $filename);
         }
 
-        $this->filesize = filesize($filename);
+        $this->filesize = (int) filesize($filename);
     }
 
     public function size() : int
