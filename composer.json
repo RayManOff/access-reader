@@ -5,5 +5,9 @@
     "psr-4" : {
       "App\\" : "src/"
     }
+  },
+  "require": {
+    "php": ">=7.0",
+    "wp-cli/php-cli-tools": "^0.11.10"
   }
 }
