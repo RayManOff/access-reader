@@ -28,7 +28,7 @@ class RegexParser implements LogParser
     public function parse(string $data) : array
     {
         if (!preg_match($this->pattern, $data, $matches)) {
-            throw new \RuntimeException('Cannot parse this data');
+            throw new \RuntimeException('Cannot parse [ ' . $data . ' ]');
         }
 
         return $this->build($matches);
