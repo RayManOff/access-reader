@@ -131,13 +131,13 @@ class AccessReader
 
     private function showStats() : void
     {
-        echo "-----------------\n";
-        echo "Stats: \n" . json_encode($this->stats, JSON_PRETTY_PRINT) . "\n";
+        \cli\line("-----------------\n");
+        \cli\line("Stats: \n" . json_encode($this->stats, JSON_PRETTY_PRINT) . "\n");
     }
 
     private function showErrors() : void
     {
-        echo "-----------------\n";
-        echo "Errors: \n" . json_encode($this->errors, JSON_PRETTY_PRINT) . "\n";
+        \cli\line("-----------------\n");
+        \cli\line("Errors: \n" . json_encode($this->errors, JSON_PRETTY_PRINT) . "\n");
     }
 }
