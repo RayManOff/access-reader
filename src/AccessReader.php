@@ -32,7 +32,7 @@ class AccessReader
     private $errors = [];
     private $uniqueUrls = [];
 
-    public function process(string $logfile)
+    public function process(string $logfile) : void
     {
         $parser = new RegexParser();
         $reader = new FileReader($logfile);
@@ -55,7 +55,7 @@ class AccessReader
         }
     }
 
-    private function handleLine($lineContent, LogParser $parser)
+    private function handleLine($lineContent, LogParser $parser) : void
     {
         try {
             $this->updateStats($parser->parse($lineContent));
@@ -64,7 +64,7 @@ class AccessReader
         }
     }
 
-    private function updateStats(array $requestInfo)
+    private function updateStats(array $requestInfo) : void
     {
         $url = $this->buildFullUrl($requestInfo['url'], $requestInfo['path']);
         $this->uniqueUrls[$url] = true;
@@ -91,7 +91,7 @@ class AccessReader
         }
     }
 
-    private function getSearchCrawler(string $userAgent)
+    private function getSearchCrawler(string $userAgent) : string
     {
         $crawler = false;
 
@@ -106,7 +106,7 @@ class AccessReader
         return $crawler;
     }
 
-    private function isCrawler(string $userAgent, array $crawlerBots)
+    private function isCrawler(string $userAgent, array $crawlerBots) : bool
     {
         $result = false;
         foreach ($crawlerBots as $botName) {
@@ -129,13 +129,13 @@ class AccessReader
         return $components['host'] . $path;
     }
 
-    private function showStats()
+    private function showStats() : void
     {
         echo "-----------------\n";
         echo "Stats: \n" . json_encode($this->stats, JSON_PRETTY_PRINT) . "\n";
     }
 
-    private function showErrors()
+    private function showErrors() : void
     {
         echo "-----------------\n";
         echo "Errors: \n" . json_encode($this->errors, JSON_PRETTY_PRINT) . "\n";

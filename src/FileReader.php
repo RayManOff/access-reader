@@ -28,6 +28,9 @@ class FileReader implements Reader
         return $this->filesize;
     }
 
+    /**
+     * @return \Generator
+     */
     public function readByLine()
     {
         while (!feof($this->resource)) {
