@@ -36,7 +36,7 @@ class RegexParser implements LogParser
         return $this->build($matches);
     }
 
-    protected function build($matches) : array
+    private function build($matches) : array
     {
         return [
             self::STATUS_KEY => (int) $matches[self::STATUS_KEY],

@@ -12,5 +12,13 @@ $arguments->addOption(['file', 'f'], [
 $arguments->parse();
 $arguments = $arguments->getArguments();
 
-$command = new AccessReader();
-$command->process($arguments['file']);
+if (isset($arguments['file'])) {
+    try {
+        $command = new AccessReader();
+        $command->process($arguments['file']);
+    } catch (\Exception $e) {
+        \cli\err($e->getMessage());
+    }
+} else {
+    \cli\err('There is no path to log file');
+}
