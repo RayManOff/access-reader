@@ -80,14 +80,12 @@ class AccessReader
         }
 
         $crawler = $this->getSearchCrawler($requestInfo['user_agent']);
-        if ($crawler === false) {
-            return;
-        }
-
-        if (isset($this->stats['crawlers'][$crawler])) {
-            $this->stats['crawlers'][$crawler]++;
-        } else {
-            $this->stats['crawlers'][$crawler] = 1;
+        if ($crawler) {
+            if (isset($this->stats['crawlers'][$crawler])) {
+                $this->stats['crawlers'][$crawler]++;
+            } else {
+                $this->stats['crawlers'][$crawler] = 1;
+            }
         }
     }
 
